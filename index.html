@@ -25,12 +25,12 @@ h3 { color:#333; font-family:sans-serif; font-size:1em; letter-spacing:normal; m
 h4,h5	{ font-weight:normal; margin:0; text-align:left; }
 h5 { font-size:1em; }
 ul,ol	{ margin-left:3em; text-align:left; }
-
+p#test { background:green; color:white; }
 section { margin:0; padding:0; width:100%; }
-#choices{ display:block; margin:1em auto; padding:0; width:80%; }
-#choices a { background:#cff; border:0; display:inline-block; font-size:1.1em; height:2em; margin:0 0 .25em 0; padding:.3em 0 0 0; text-align:center; text-decoration:none; width:17.5%; }
-#choicesa:hover,#choices a:focus { background:#fc0; }
-#choices a:active { background:#444; color:#aaa; }
+#percent{ display:block; margin:1em auto; padding:0; width:80%; }
+#percent a { background:#cff; border:0; display:inline-block; font-size:1.1em; height:2em; margin:0 0 .25em 0; padding:.3em 0 0 0; text-align:center; text-decoration:none; width:17.5%; }
+#percenta:hover,#percent a:focus { background:#fc0; }
+#percent a:active { background:#444; color:#aaa; }
 
 a	{ color:#000; text-decoration:underline; }
 a:visited	{ color:#333; }
@@ -42,6 +42,7 @@ button:hover, button:focus { background:#fc0; color:#f30; }
 button:active { background:#444; color:#aaa; }
 
 .note { background:#ff9; margin:auto; padding:.5em .1em; text-align:center; width:55%; }
+.note span { background:orange; color:blue; }
 .amp { font-family:"Goudy Old Style", "Palatino", "Book Antiqua", serif; font-weight:normal; font-style:italic; font-size:1.1em; }
 
 form { width:100%; }
@@ -55,26 +56,19 @@ header { width:100%; }
 p { font-size:1em; margin-bottom:.75em; } 
 form label input { border:thin solid #444; font-size:2em; margin-bottom:.5em; padding:.2em; width:75%; }
 .note { width:90%; }
-#choices { margin:.2em auto 1.5em auto; width:100%; }
+#percent { margin:.2em auto 1.5em auto; width:100%; }
 }
 </style>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 <!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-
-<script type="text/javascript">
-// declare a variable for total and for tip
-// multiple #subtotal by the percentage
-// how do i use the list of hrefs to set percentage
-// 
-</script>
-
 </head>
 
 <body id="top">
 
 <header>
 <h1 id="logo">Easy-Tipper</h1>
+  <p id="test">Not loaded yet.</p>
 </header>
 
 <article>
@@ -82,28 +76,48 @@ form label input { border:thin solid #444; font-size:2em; margin-bottom:.5em; pa
         <fieldset>
             <section>
                 <h2 id="tagline">Figure the tip easily <span class="amp">&amp;</span> quickly!</h2>
-              <label for="subtotal">Enter your subtotal:
-                <input type="number" id="subtotal" name="subtotal"/>
-              </label>
-              <label>How much do you want to tip?</label>
-                <span id="choices">
-                    <a href="">5%</a>
-                    <a href="">10%</a>
-                    <a href="">15%</a>
-                    <a href="">20%</a>
-                    <a href="">25%</a>
-                    <a href="">30%</a>
-                    <a href="">35%</a>
-                    <a href="">40%</a>
-                    <a href="">45%</a>
-                    <a href="">50%</a>
-                </span>
-                <!-- <button type="submit">Submit</button> -->
-                <p class="note">Your total is $XX.XX, <br/>with a YY% tip of $ZZ.ZZ.</p>
+
+                  <label for="subtotal">Enter your subtotal:
+                    <input type="number" id="subtotal" name="subtotal"/>
+                  </label>
+                  <label for="percent">How much do you want to tip?</label>
+                    <span id="percent">
+                        <a href="#" data-value="5">5%</a>
+                        <a href="#" data-value="10">10%</a>
+                        <a href="#" data-value="15">15%</a>
+                        <a href="#" data-value="20">20%</a>
+                        <a href="#" data-value="25">25%</a>
+                        <a href="#" data-value="30">30%</a>
+                        <a href="#" data-value="35">35%</a>
+                        <a href="#" data-value="40">40%</a>
+                        <a href="#" data-value="45">45%</a>
+                        <a href="#" data-value="50">50%</a>
+                    </span>
+
+                <p class="note">Your total is $<span id="total">#total</span>, <br/>with a $<span id="tip">#tip</span> tip of <span id="tip-percent">0</span>%.</p>
             </section>
         </fieldset>
     </form>
 </article>
+  <script>
+  $(document).ready(function () {
+  $("p#test").text("The DOM is now loaded and can be manipulated.");
+  });
+  </script>
+
+//   <script>
+//   $(document).ready(function() {
+//     $("#percent a").click(function() { $("#wordtochange").text($(this).data('value'));};
+//   });
+// </script>
+
+//   <script>
+//   $(document).ready(function() {
+//     var myValue = $(this).data('value');
+//     $("#percent a").click(function() { $("#wordtochange").html(myValue);
+//     };
+//   });
+  </script>
 
 </body>
 </html>
