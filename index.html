@@ -105,18 +105,13 @@ form label input { border:thin solid #444; font-size:2em; margin-bottom:.5em; pa
   });
   </script>
 
-//   <script>
-//   $(document).ready(function() {
-//     $("#percent a").click(function() { $("#wordtochange").text($(this).data('value'));};
-//   });
-// </script>
-
-//   <script>
-//   $(document).ready(function() {
-//     var myValue = $(this).data('value');
-//     $("#percent a").click(function() { $("#wordtochange").html(myValue);
-//     };
-//   });
+  <script>
+  $(document).ready(function() {
+   $("#percent a").click(function() {
+      var percentage = $(this).attr('data-value');
+    $("#tip-percent").text(percentage);
+  });
+  });
   </script>
 
 </body>
