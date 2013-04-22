@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>Easy-Tipper.com</title>
 
-<meta name="description" content="jCalculate tips quickly and easily!"/>
+<meta name="description" content="Calculate tips quickly and easily!"/>
 <meta name="keywords" content="jennifer strickland, web-standards, web design, web designer, web developer, developer, print design, print designer, user experience designer, user interface designer, information architecture, content strategy, rwd, responsive web design, mobile first, iphone design, iphone application, iphone development, ruby on rails, visual design, visual designer, creative, honest, integrity, experienced, boston, cambridge, massachusetts, css3, html5"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -18,18 +18,18 @@ header, article { margin:auto; padding:0; text-align:center; width:100%; }
 header { margin:2em auto 1em auto; }
 #logo, #tagline { margin:auto; text-align:center; }
 #tagline { background:#222; display:block; height:1.5em; left:0; margin:auto; position:absolute; top:0; width:100%; }
-p,h5 { font-style:normal; font-weight:normal; height:auto; line-height:150%; letter-spacing:normal; margin:..5em; padding:0 0 1em 0; }
+p,h5 { font-style:normal; font-weight:normal; height:auto; line-height:150%; letter-spacing:normal; margin:.5em; padding:0 0 1em 0; }
 h1 { font-family:Georgia, "Times New Roman", times, serif; font-size:1.75em; font-weight:normal; letter-spacing:1px; height:auto; padding:0; margin:0; }
 h2 { color:#fff; font-size:.9em; font-weight:normal; height:auto; letter-spacing:1px; margin:0; padding:.5em 0; text-align:center; text-transform:uppercase; }
 h3 { color:#333; font-family:sans-serif; font-size:1em; letter-spacing:normal; margin:1em 0 0 0; padding:.3em 0; text-align:left; }
 h4,h5	{ font-weight:normal; margin:0; text-align:left; }
 h5 { font-size:1em; }
 ul,ol	{ margin-left:3em; text-align:left; }
-p#test { background:green; color:white; }
+p#test { background:green; color:white; display:none; }
 section { margin:0; padding:0; width:100%; }
 #percent{ display:block; margin:1em auto; padding:0; width:80%; }
 #percent a { background:#cff; border:0; display:inline-block; font-size:1.1em; height:2em; margin:0 0 .25em 0; padding:.3em 0 0 0; text-align:center; text-decoration:none; width:17.5%; }
-#percenta:hover,#percent a:focus { background:#fc0; }
+#percent a:hover,#percent a:focus { background:#fc0; }
 #percent a:active { background:#444; color:#aaa; }
 
 a	{ color:#000; text-decoration:underline; }
@@ -99,18 +99,26 @@ form label input { border:thin solid #444; font-size:2em; margin-bottom:.5em; pa
         </fieldset>
     </form>
 </article>
-  <script>
-  $(document).ready(function () {
-  $("p#test").text("The DOM is now loaded and can be manipulated.");
-  });
-  </script>
+
 
   <script>
+
+  // $(document).ready(function () {
+  // $("p#test").text("The DOM is now loaded and can be manipulated.");
+  // });
+
   $(document).ready(function() {
+
    $("#percent a").click(function() {
-      var percentage = $(this).attr('data-value');
-    $("#tip-percent").text(percentage);
-  });
+      var percentage = $(this).data('value');
+        $("#tip-percent").text(percentage);
+    });
+
+    var total = function(subtotal,percentage) {
+        return (percentage * .1 * subtotal);
+        $("#total").text(total);
+    };
+
   });
   </script>
 
