@@ -114,10 +114,9 @@ form label input { border:thin solid #444; font-size:2em; margin-bottom:.5em; pa
         $("#tip-percent").text(percentage);
     });
 
-    var total = function(subtotal,percentage) {
-        return (percentage * .1 * subtotal);
-        $("#total").text(total);
-    };
+    // on click calculate #total via #subtotal * (#percentage * .1)
+    // also calculate #tip via (#total - #subtotal)
+    // then push those to the appropriate spans
 
   });
   </script>
