@@ -72,13 +72,14 @@ form label input { border:thin solid #444; font-size:2em; margin-bottom:.5em; pa
 </header>
 
 <article>
+  <p>About to start design! Going to leave out dollar signs so it can be used by any currency.</p>
     <form>
         <fieldset>
             <section>
                 <h2 id="tagline">Figure the tip easily <span class="amp">&amp;</span> quickly!</h2>
 
                   <label for="subtotal">Enter your subtotal:
-                    <input type="number" id="subtotal" name="subtotal"/>
+                    <input type="number" id="subtotal" name="subtotal" min="0" step=".01"/>
                   </label>
                   <label for="percent">How much do you want to tip?</label>
                     <span id="percent">
@@ -94,7 +95,7 @@ form label input { border:thin solid #444; font-size:2em; margin-bottom:.5em; pa
                         <a href="#" data-value="50">50%</a>
                     </span>
 
-                <p class="note">Your total is $<span id="total">#total</span>, <br/>with a $<span id="tip">#tip</span> tip of <span id="tip-percent">0</span>%.</p>
+                <p class="note">Your total is <span id="total">_____</span>, <br/>with a <span id="tip">_____</span> tip of <span id="tip-percent">_____</span>%.</p>
             </section>
         </fieldset>
     </form>
@@ -110,13 +111,16 @@ form label input { border:thin solid #444; font-size:2em; margin-bottom:.5em; pa
   $(document).ready(function() {
 
    $("#percent a").click(function() {
-      var percentage = $(this).data('value');
-        $("#tip-percent").text(percentage);
-    });
+      var subtotal = parseFloat($('#subtotal').val());
+      var percentage = parseFloat($(this).data('value'));
+      var tip = subtotal * (percentage * .01);
+      var total = subtotal + tip;
 
-    // on click calculate #total via #subtotal * (#percentage * .1)
-    // also calculate #tip via (#total - #subtotal)
-    // then push those to the appropriate spans
+      $("#total").text(total.toFixed(2));
+      $("#tip").text(tip.toFixed(2));
+      $("#subtotal").text(subtotal.toFixed(2));
+      $("#tip-percent").text(percentage);
+    });
 
   });
   </script>
