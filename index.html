@@ -68,7 +68,7 @@ form label input { border:thin solid #444; font-size:2em; margin-bottom:.5em; pa
 
 <header>
 <h1 id="logo">Easy-Tipper</h1>
-  <p id="test">Not loaded yet.</p>
+  <!-- <p id="test">Not loaded yet.</p> -->
 </header>
 
 <article>
@@ -113,7 +113,7 @@ form label input { border:thin solid #444; font-size:2em; margin-bottom:.5em; pa
    $("#percent a").click(function() {
       var subtotal = parseFloat($('#subtotal').val());
       var percentage = parseFloat($(this).data('value'));
-      var tip = subtotal * (percentage * .01);
+      var tip = ((subtotal * percentage) / 100);
       var total = subtotal + tip;
 
       $("#total").text(total.toFixed(2));
